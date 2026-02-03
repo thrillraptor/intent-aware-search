@@ -1,13 +1,13 @@
-import apiClient from "../../lib/api/apiClient";
+import api from "../../lib/api/api";
 
 export const postServices = {
   getPosts: async () => {
-    const { data } = await apiClient.get("/posts");
+    const { data } = await api.get("/posts");
     return { data };
   },
 
   searchPosts: async ({ searchQuery, topK = 5 }) => {
-    const { data } = await apiClient.post("/search", {
+    const { data } = await api.post("/search", {
       searchQuery,
       topK,
     });

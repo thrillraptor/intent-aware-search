@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiClient = axios.create({
+const api = axios.create({
   baseURL: `${import.meta.env.VITE_APP_API_URL}/api`,
   timeout: 10000,
   headers: {
@@ -8,4 +8,4 @@ const apiClient = axios.create({
   },
 });
 
-export default apiClient;
+export default api;

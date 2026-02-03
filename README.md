@@ -68,7 +68,7 @@ Performs a semantic search by comparing a query embedding with stored document e
 
 ```json
 {
-	"query" : "your search text here",
+	"searchQuery" : "your search text here",
 	"topK" : 5 (Optional)
 }
 ```

@@ -6,25 +6,27 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
-  
+
   .line-clamp-3 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
-  
+
   .prose {
     color: inherit;
     max-width: 65ch;
   }
-  
+
   .prose p {
     margin-top: 1.25em;
     margin-bottom: 1.25em;
   }
-  
+
   .dark .prose {
     color: #d1d5db;
   }
@@ -33,7 +35,7 @@
 /* For the main page scrollbar */
 html {
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 body::-webkit-scrollbar {

@@ -1,4 +1,4 @@
-import { embed } from "../libs/embeddingModel.js";
+import { embed } from "../libs/model-loader.js";
 
 export const EmbeddingService = async (structuredChunk) => {
   const { contentChunk } = structuredChunk;

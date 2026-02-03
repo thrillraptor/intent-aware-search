@@ -1,5 +1,5 @@
 import { Seeder } from "mongo-seeding";
-import env from "../config/env.js";
+import env from "../config/env.config.js";
 import postsData from "../data/posts/data.js";
 
 var uri = env.URI;

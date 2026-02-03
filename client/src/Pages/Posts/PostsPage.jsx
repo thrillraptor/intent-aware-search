@@ -89,16 +89,12 @@ export default function PostPage() {
 
   // Format date safely
   const formatDate = (dateString) => {
-    try {
-      const date = new Date(dateString);
-      return new Intl.DateTimeFormat("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }).format(date);
-    } catch (e) {
-      return "Date not available";
-    }
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(date);
   };
 
   // Format relevance score for search results
@@ -176,11 +172,11 @@ export default function PostPage() {
   if (isLoading && !displayData.length) {
     return (
       <div className="min-h-screen bg-slate-950 p-4 md:p-8">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-cyan-500/5"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-violet-500/5 via-transparent to-cyan-500/5"></div>
         <div className="max-w-7xl mx-auto relative">
           {/* Header skeleton */}
           <div className="mb-12">
-            <div className="h-12 w-80 bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg mb-4 animate-pulse"></div>
+            <div className="h-12 w-80 bg-linear-to-r from-slate-800 to-slate-700 rounded-lg mb-4 animate-pulse"></div>
             <div className="h-6 w-96 bg-slate-800 rounded-lg animate-pulse"></div>
           </div>
 
@@ -217,18 +213,18 @@ export default function PostPage() {
   if (isPostsError && !postsData && !debouncedQuery) {
     return (
       <div className="min-h-screen bg-slate-950 p-8 flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 via-transparent to-orange-500/10"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-rose-500/10 via-transparent to-orange-500/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,100,100,0.1),transparent_50%)]"></div>
 
         <div className="max-w-2xl w-full relative">
           <div className="bg-slate-900/80 backdrop-blur-xl border border-rose-500/20 rounded-3xl p-10 shadow-2xl">
             <div className="flex items-start gap-6">
-              <div className="p-4 bg-gradient-to-br from-rose-500 to-orange-600 rounded-2xl shadow-lg">
+              <div className="p-4 bg-linear-to-br from-rose-500 to-orange-600 rounded-2xl shadow-lg">
                 <AlertCircle className="h-8 w-8 text-white" />
               </div>
 
               <div className="flex-1">
-                <h2 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
+                <h2 className="text-3xl font-bold text-white mb-3 bg-linear-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
                   Unable to Connect
                 </h2>
                 <p className="text-slate-300 text-lg mb-6 leading-relaxed">
@@ -239,7 +235,7 @@ export default function PostPage() {
                 <div className="flex gap-4">
                   <button
                     onClick={handleRefresh}
-                    className="flex-1 bg-gradient-to-r from-rose-500 to-orange-600 hover:from-rose-600 hover:to-orange-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105"
+                    className="flex-1 bg-linear-to-r from-rose-500 to-orange-600 hover:from-rose-600 hover:to-orange-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105"
                   >
                     <RefreshCw className="h-5 w-5" />
                     Try Again
@@ -262,7 +258,7 @@ export default function PostPage() {
   return (
     <div className="min-h-screen bg-slate-950 p-4 md:p-8 transition-colors duration-300 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-cyan-500/5"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-violet-500/5 via-transparent to-cyan-500/5"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(139,92,246,0.1),transparent_25%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(6,182,212,0.1),transparent_25%)]"></div>
 
@@ -272,10 +268,10 @@ export default function PostPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-xl">
+                <div className="p-2 bg-linear-to-br from-violet-500 to-cyan-500 rounded-xl">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
+                <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
                   {debouncedQuery ? "Search Results" : "Discover Posts"}
                 </h1>
               </div>
@@ -292,7 +288,7 @@ export default function PostPage() {
                 disabled={searchMutation.isPending || isRefetchingPosts}
                 className="group relative overflow-hidden bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-slate-200 font-medium py-3 px-5 rounded-xl transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-linear-to-r from-violet-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {searchMutation.isPending || isRefetchingPosts ? (
                   <Loader2 className="h-5 w-5 animate-spin relative z-10" />
                 ) : (
@@ -301,7 +297,7 @@ export default function PostPage() {
                 <span className="relative z-10 hidden sm:inline">Refresh</span>
               </button>
 
-              <div className="bg-gradient-to-r from-violet-500 to-cyan-500 text-white px-5 py-3 rounded-xl text-sm font-semibold shadow-lg">
+              <div className="bg-linear-to-r from-violet-500 to-cyan-500 text-white px-5 py-3 rounded-xl text-sm font-semibold shadow-lg">
                 {displayData.length}{" "}
                 {displayData.length === 1 ? "Post" : "Posts"}
               </div>
@@ -310,21 +306,22 @@ export default function PostPage() {
 
           {/* Search Bar */}
           <div className="relative max-w-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 rounded-2xl blur-xl"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-violet-500/20 to-cyan-500/20 rounded-2xl blur-xl"></div>
             <div className="relative bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl">
               <div className="flex items-center px-6 py-4">
-                <Search className="h-5 w-5 text-slate-400 mr-3 flex-shrink-0" />
+                <Search className="h-5 w-5 text-slate-400 mr-3 shrink-0" />
                 <input
                   type="text"
-                  placeholder="Search for posts..."
+                  placeholder="Search for posts here"
                   className="flex-1 bg-transparent text-white placeholder-slate-500 focus:outline-none text-lg"
                   value={searchQuery}
                   onChange={handleSearchChange}
+                  autoFocus
                 />
                 {searchQuery && (
                   <button
                     onClick={clearSearch}
-                    className="ml-3 p-2 hover:bg-slate-800 rounded-lg transition-colors group flex-shrink-0"
+                    className="ml-3 p-2 hover:bg-slate-800 rounded-lg transition-colors group shrink-0"
                     aria-label="Clear search"
                   >
                     <X className="h-5 w-5 text-slate-400 group-hover:text-slate-200 transition-colors" />
@@ -336,7 +333,7 @@ export default function PostPage() {
               {debouncedQuery && searchMutation.isPending && (
                 <div className="px-6 pb-4 flex items-center gap-3 text-sm text-violet-400 border-t border-slate-800/50 pt-4">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  <span>Searching posts...</span>
+                  <span>Searching posts</span>
                 </div>
               )}
             </div>
@@ -345,9 +342,9 @@ export default function PostPage() {
 
         {/* Search Error State - Inline */}
         {hasSearchError && (
-          <div className="mb-8 bg-gradient-to-r from-rose-500/10 to-orange-500/10 border border-rose-500/20 rounded-2xl p-6 backdrop-blur-xl">
+          <div className="mb-8 bg-linear-to-r from-rose-500/10 to-orange-500/10 border border-rose-500/20 rounded-2xl p-6 backdrop-blur-xl">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-gradient-to-br from-rose-500/20 to-orange-500/20 rounded-xl flex-shrink-0">
+              <div className="p-3 bg-linear-to-br from-rose-500/20 to-orange-500/20 rounded-xl shrink-0">
                 <AlertCircle className="h-6 w-6 text-rose-400" />
               </div>
               <div className="flex-1">
@@ -360,7 +357,7 @@ export default function PostPage() {
                 </p>
                 <button
                   onClick={() => searchMutation.mutate(debouncedQuery)}
-                  className="bg-gradient-to-r from-rose-500 to-orange-600 hover:from-rose-600 hover:to-orange-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                  className="bg-linear-to-r from-rose-500 to-orange-600 hover:from-rose-600 hover:to-orange-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
                 >
                   <RefreshCw className="h-4 w-4" />
                   Retry Search
@@ -373,9 +370,9 @@ export default function PostPage() {
         {/* No Posts Banner */}
         {hasNoPosts && (
           <div className="relative bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-12 text-center overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-cyan-500/5"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-violet-500/5 to-cyan-500/5"></div>
             <div className="relative max-w-2xl mx-auto">
-              <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-violet-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl transform -rotate-6">
+              <div className="w-24 h-24 mx-auto mb-6 bg-linear-to-br from-violet-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-2xl transform -rotate-6">
                 <BookOpen className="h-12 w-12 text-white" />
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -386,7 +383,7 @@ export default function PostPage() {
               </p>
               <button
                 onClick={handleRefresh}
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-200 shadow-2xl hover:shadow-violet-500/25 hover:scale-105"
+                className="inline-flex items-center gap-3 bg-linear-to-r from-violet-500 to-cyan-500 hover:from-violet-600 hover:to-cyan-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-200 shadow-2xl hover:shadow-violet-500/25 hover:scale-105"
               >
                 <RefreshCw className="h-5 w-5" />
                 Check for New Posts
@@ -398,7 +395,7 @@ export default function PostPage() {
         {/* No Search Results */}
         {hasNoSearchResults && !hasSearchError && (
           <div className="relative bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-12 text-center overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-800/30 to-slate-900/30"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-slate-800/30 to-slate-900/30"></div>
             <div className="relative max-w-2xl mx-auto">
               <div className="w-24 h-24 mx-auto mb-6 bg-slate-800 rounded-3xl flex items-center justify-center border border-slate-700">
                 <Search className="h-12 w-12 text-slate-500" />
@@ -440,7 +437,7 @@ export default function PostPage() {
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 to-cyan-500/0 group-hover:from-violet-500/5 group-hover:to-cyan-500/5 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-br from-violet-500/0 to-cyan-500/0 group-hover:from-violet-500/5 group-hover:to-cyan-500/5 transition-all duration-300"></div>
 
                   <div className="relative p-6">
                     {/* Tag */}
@@ -454,7 +451,7 @@ export default function PostPage() {
                     )}
 
                     {/* Title */}
-                    <h3 className="line-clamp-2 text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-violet-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300 mb-4 leading-tight min-h-[3.5rem]">
+                    <h3 className="line-clamp-2 text-xl font-bold text-white group-hover:text-transparent group-hover:bg-linear-to-r group-hover:from-violet-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300 mb-4 leading-tight min-h-[3.5rem]">
                       {post.title}
                     </h3>
 
@@ -474,7 +471,7 @@ export default function PostPage() {
                       {/* Relevance Score Tag */}
                       {debouncedQuery && typeof post.score === "number" && (
                         <span
-                          className={`inline-flex items-center gap-2 text-xs font-semibold bg-gradient-to-r ${getRelevanceColor(post.score)} text-white px-3 py-1.5 rounded-lg shadow-lg`}
+                          className={`inline-flex items-center gap-2 text-xs font-semibold bg-linear-to-r ${getRelevanceColor(post.score)} text-white px-3 py-1.5 rounded-lg shadow-lg`}
                         >
                           <TrendingUp className="h-3.5 w-3.5" />
                           {formatRelevanceScore(post.score)} match
@@ -485,7 +482,7 @@ export default function PostPage() {
                     {/* Read More Button */}
                     <button
                       onClick={() => openPostModal(post)}
-                      className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-gradient-to-r hover:from-violet-500 hover:to-cyan-500 border border-slate-700 hover:border-transparent text-slate-300 hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 group/btn shadow-lg hover:shadow-xl"
+                      className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-linear-to-r hover:from-violet-500 hover:to-cyan-500 border border-slate-700 hover:border-transparent text-slate-300 hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 group/btn shadow-lg hover:shadow-xl"
                     >
                       <BookOpen className="h-4 w-4 group-hover/btn:scale-110 transition-transform" />
                       Read Full Post
@@ -516,7 +513,7 @@ export default function PostPage() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Decorative gradient */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-violet-500 via-fuchsia-500 to-cyan-500"></div>
 
               {/* Modal Header */}
               <div className="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 p-8">
@@ -541,7 +538,7 @@ export default function PostPage() {
 
                   {debouncedQuery && typeof selectedPost.score === "number" && (
                     <span
-                      className={`inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r ${getRelevanceColor(selectedPost.score)} text-white px-4 py-2 rounded-lg shadow-lg`}
+                      className={`inline-flex items-center gap-2 text-sm font-semibold bg-linear-to-r ${getRelevanceColor(selectedPost.score)} text-white px-4 py-2 rounded-lg shadow-lg`}
                     >
                       <TrendingUp className="h-4 w-4" />
                       {formatRelevanceScore(selectedPost.score)} match
@@ -567,7 +564,7 @@ export default function PostPage() {
               {/* Modal Body */}
               <div className="p-8 overflow-y-auto max-h-[60vh]">
                 <div className="prose prose-invert prose-lg max-w-none">
-                  <p className="text-slate-300 leading-relaxed text-lg whitespace-pre-wrap">
+                  <p className="text-slate-300 leading-relaxed text-lg whitespace-pre-wrap text-justify">
                     {selectedPost.content}
                   </p>
                 </div>

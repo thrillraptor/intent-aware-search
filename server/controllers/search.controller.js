@@ -1,8 +1,8 @@
 import { validationResult } from "express-validator";
-import { embed } from "../libs/embeddingModel.js";
+import { embed } from "../libs/model-loader.js";
 import PostChunk from "../models/PostChunk.js";
 import Post from "../models/Post.js";
-import { similaritySearch } from "../services/similaritySearch.service.js";
+import { SimilaritySearch } from "../services/search.service.js";
 
 export const search = {
   searchPost: async (req, res) => {
@@ -29,7 +29,7 @@ export const search = {
         },
       ).lean();
 
-      const rankedChunks = similaritySearch({
+      const rankedChunks = SimilaritySearch({
         queryEmbedding,
         documents: chunks,
         topK: 50,

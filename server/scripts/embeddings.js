@@ -2,8 +2,8 @@ import PostChunk from "../models/PostChunk.js";
 import Post from "../models/Post.js";
 import { ChunkingService } from "../services/chunking.service.js";
 import { EmbeddingService } from "../services/embedding.service.js";
-import connectDatabase from "../config/cnxDB.js";
-import env from "../config/env.js";
+import connectDatabase from "../config/db.config.js";
+import env from "../config/env.config.js";
 
 let uri = env.URI;
 

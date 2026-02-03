@@ -1,8 +1,8 @@
 import express from "express";
-import { corsOptions } from "./config/corsOptions.js";
+import { corsOptions } from "./config/cors.config.js";
 import cors from "cors";
-import connectDatabase from "./config/cnxDB.js";
-import env from "./config/env.js";
+import connectDatabase from "./config/db.config.js";
+import env from "./config/env.config.js";
 
 const app = express();
 
