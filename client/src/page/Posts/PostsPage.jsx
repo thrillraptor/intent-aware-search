@@ -14,7 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 
-export default function PostPage() {
+export default function PostsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [selectedPost, setSelectedPost] = useState(null);
